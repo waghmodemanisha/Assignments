@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listing</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+</head>
+
+<body>
+    <section class="vh-100 login_section" id="signin">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-11">
+                    <div class="card overflow-hidden shadow" style="border-radius: 1rem;">
+                        <div class="row g-0">
+                            <div class="col-md-6 col-lg-6 d-none d-md-block">
+                                <div class="d-flex align-items-start flex-column bd-highlight mb-3 h-100">
+                                    <div
+                                        class="d-flex p-4 h-100 align-self-center justify-content-center align-items-center">
+
+                                        <h1
+                                            class="display-5 uppercase font-weight-light font-light font-italic text-white">
+                                            Welcome to <br><span class="ml-5">Our Website!</span></h1>
+
+                                    </div>
+                                    <div class=" align-self-start">
+                                        <img src="./assets/images/login-image.png" alt="login form"
+                                            class="img-fluid align-self-end" style="border-radius: 1rem 0 0 1rem;" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 d-flex align-items-center">
+                                <div
+                                    class="card-body bg-white text-black  forms d-flex justify-content-center align-items-center">
+                                    <div class="form login" id="login-container">
+                                        <div class="form-content">
+                                            <header>Login</header>
+                                            <form id="LoginForm" action="#" onSubmit="return validateForm()">
+                                                <div class="username-field">
+                                                    <span class="error username-error">
+                                                        <span class="error-text">Please enter a valid Email and
+                                                            password</span>
+
+                                                    </span>
+                                                    <div class="field input-field">
+                                                        <i class="fa fa-user"></i>
+                                                        <input type="email" name="email" value=""
+                                                            placeholder="Enter Email" id="emailidset"
+                                                            class="input username form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="user-pass">
+                                                    <div class="field  userpassField input-field">
+                                                        <input type="password" name="pass" id="passwordset" value=""
+                                                            placeholder="Password" class="userpassword form-control">
+                                                        <i class='fa fa-eye bx bx-hide show-pass'></i>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-2 mb-4">
+                                                    <div class="col">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="rememberme" name="example1">
+                                                            <label class="custom-control-label font-13 text-primary"
+                                                                for="rememberme">
+                                                                Remember me </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col text-right font-13">
+                                                        <a href="#!">Forgot password?</a>
+                                                    </div>
+                                                </div>
+                                                <div class="field button-field mt-5">
+                                                    <button type="submit" formaction="home.html">Login</button>
+                                                </div>
+                                            </form>
+                                            <div class="form-link mt-3">
+                                                <span>Don't have an account? <a href="#"
+                                                        class="link signup-link">Signup</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="media-options d-flex justify-content-center">
+                                            <ul id="medial-login">
+                                                <li><a href="#"><i class="facebook-icon"></i></a></li>
+                                                <li><a href="#"><i class="insta-icon"></i></a></li>
+                                                <li><a href="#"><i class="linkedin-icon"></i></a></li>
+                                                <li><a href="#"><i class="tweeter-icon"></i></a></li>
+                                                <li><a href="#"><i class="google-icon"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="form signup" id="signup-container">
+                                        <div class="form-content">
+                                            <header>Signup</header>
+                                            <form action="#" id="signup">
+                                                <div class="fname-field">
+                                                    <div class="field input-field">
+                                                        <input type="text" placeholder="First name" class="fname" />
+                                                    </div>
+                                                    <span class="error fname-error">
+                                                        <i class="bx bx-error-circle error-icon"></i>
+                                                        <span class="error-text">Please enter first name</span>
+                                                    </span>
+                                                </div>
+                                                <div class="lname-field">
+                                                    <div class="field input-field ">
+                                                        <input type="text" placeholder="Last Name" class="lname" />
+                                                    </div>
+                                                    <span class="error lname-error">
+                                                        <i class="bx bx-error-circle error-icon"></i>
+                                                        <span class="error-text">Please enter last name</span>
+                                                    </span>
+                                                </div>
+                                                <div class="email-field">
+                                                    <div class="field input-field">
+                                                        <input type="email" placeholder="Enter your email"
+                                                            class="email" />
+                                                    </div>
+                                                    <span class="error email-error">
+                                                        <i class="bx bx-error-circle error-icon"></i>
+                                                        <span class="error-text">Please enter a valid email</span>
+                                                    </span>
+                                                </div>
+                                                <div class="create-password">
+                                                    <div class="field input-field">
+                                                        <input type="password" placeholder="Create password"
+                                                            class="password" />
+                                                        <i class="fa fa-eye  bx bx-hide show-pass"></i>
+                                                    </div>
+                                                    <span class="error password-error">
+                                                        <i class="bx bx-error-circle error-icon"></i>
+                                                        <span class="error-text">
+                                                            Please enter atleast 8 charatcer with number, symbol, small
+                                                            and
+                                                            capital letter.
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                                <div class="confirm-password">
+                                                    <div class="field input-field">
+                                                        <input type="password" placeholder="Confirm password"
+                                                            class="cPassword" />
+                                                        <i class="fa fa-eye  bx bx-hide show-pass"></i>
+                                                    </div>
+                                                    <p class="error cPassword-error">
+                                                        <i class="bx bx-error-circle error-icon"></i>
+                                                        <span class="error-text">Password don't match</span>
+                                                    </p>
+                                                </div>
+                                                <div class="field button-field">
+                                                    <button type="submit" formaction="#LoginForm"> Signup </button>
+                                                </div>
+                                            </form>
+                                            <div class="form-link">
+                                                <span>Already have an account? <a href="#"
+                                                        class="link login-link">Login</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="media-options d-flex justify-content-center">
+                                            <ul id="medial-login">
+                                                <li><a href="#"><i class="facebook-icon"></i></a></li>
+                                                <li><a href="#"><i class="insta-icon"></i></a></li>
+                                                <li><a href="#"><i class="linkedin-icon"></i></a></li>
+                                                <li><a href="#"><i class="tweeter-icon"></i></a></li>
+                                                <li><a href="#"><i class="google-icon"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- JavaScript -->
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/signin_script.js"></script>
+</body>
+
+</html>

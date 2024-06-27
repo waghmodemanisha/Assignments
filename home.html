@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listing</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- Modal -->
+    <div class="modal fade" id="edit-event-details" tabindex="-1" role="dialog" aria-labelledby="edit-event-details"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit/Update Event</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body editor">
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <div id="msg"></div>
+                            <div>
+                                <label>Update image</label>
+                                <form id="image-form" class="mt-0">
+                                    <input type="file" name="img[]" class="file" accept="image/*">
+                                    <div class="input-group mt-1 mb-3">
+                                        <input type="text" class="form-control" disabled placeholder="Upload File"
+                                            id="file">
+                                        <div class="input-group-append">
+                                            <button type="button" class="browse btn btn-primary">Browse...</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <label>Update Event Name</label>
+                            <input type="text" class="form-control" value="Event Name" />
+
+                            <div class="d-flex mt-4 row">
+                                <div class="col-lg-6">
+                                    <label>Event start Date: </label>
+                                    <!-- Date Picker -->
+                                    <div class="form-group">
+                                        <div class="datepicker date input-group">
+                                            <input type="date" placeholder="Choose Start Date" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Event end Date: </label>
+                                    <!-- Date Picker -->
+                                    <div class="form-group">
+                                        <div class="datepicker date input-group">
+                                            <input type="date" placeholder="Choose To Date" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mt-4">
+                            <div class="image-container"><img src="./assets/images/event-image1.png" id="preview"
+                                    class="img-thumbnail"></div>
+                        </div>
+                        <div class="col-lg-12 mt-3">
+                            <label>Update Description</label>
+                            <textarea cols="5" rows="5" class="form-control event-text-des mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing
+    elit. Mauris et metus nisi. Nulla eleifend in leo vitae ultricies.
+    Curabitur lectus mi, hendrerit nec magna vitae, porttitor tincidunt
+    augue. Sed ac orci pulvinar, convallis turpis venenatis, vulputate nibh.
+    Pellentesque in tempus ante. Phasellus sed turpis nibh.
+ </textarea>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="view-event-details" tabindex="-1" role="dialog" aria-labelledby="view-event-details"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" id="events">
+                <div class="modal-header">
+                    <h5 class="modal-title">Event Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body cord-body editor">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="image-container"><img src="./assets/images/event-image1.png" id="preview"
+                                    class="img-thumbnail"></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Event Name:</label>
+                            <div class="card-title ">Event Name ...</div>
+                            <div class="d-flex mt-4">
+                                <div class="mr-2">
+                                    <div class="text-primary">Event Date: </div>
+                                    <span class="card-text pull-left font-13"><i class="fa fa-calendar-o"></i>
+                                        20/Mar/2019 -
+                                        05/Apr/2019</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mt-3">
+                            <label>Event Details</label>
+                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit. Mauris et metus nisi. Nulla eleifend in leo vitae ultricies.
+                                Curabitur lectus mi, hendrerit nec magna vitae, porttitor tincidunt
+                                augue. Sed ac orci pulvinar, convallis turpis venenatis, vulputate nibh.
+                                Pellentesque in tempus ante. Phasellus sed turpis nibh.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header id="header">
+        <div class="container">
+            <div id="logo" class="d-flex justify-content-between ">
+                <a href="index.html" class="text-primary">LOGO</a>
+                <a class="btn btn-primary" href="./index.html">Logout</a>
+            </div>
+        </div>
+    </header>
+    <section id="innerpage">
+        <div class="container position-relative">
+            <h1 class="mb-1 mt-5 text-white pb-3"> Events Listing </h1>
+            <div class="section-header">
+            </div>
+        </div>
+    </section>
+    <main id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="section-header pt-5 pb-5">
+                        <h2>
+                            Upcoming Events
+                            <small>popular events to go</small>
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12">
+                    <section id="events">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card p-0">
+                                        <img class="card-img-top" src="./assets/images/event-image1.png"
+                                            alt="Card image" />
+                                        <div class="card-body p-2">
+                                            <h4 class="card-title "><a href="event-details.html">Event Name ...</a></h4>
+                                            <p class="disc">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                elit. Mauris et metus nisi. Nulla eleifend in leo vitae ultricies.
+                                                Curabitur lectus mi, hendrerit nec magna vitae, porttitor tincidunt
+                                                augue. Sed ac orci pulvinar, convallis turpis venenatis, vulputate nibh.
+                                                Pellentesque in tempus ante. Phasellus sed turpis nibh.
+                                            </p>
+                                            <p class="m-0">
+                                                <span class="pull-left card-text  text-primary"><i
+                                                        class="fa fa-calendar-o"></i> 20/Mar/2019 -
+                                                    05/Apr/2019</span>
+                                                <a class="btn pull-right btn-xs btn-primary" tabindex="0" href="#"
+                                                    data-toggle="modal" tooltip="Edit event"
+                                                    data-target="#view-event-details">View
+                                                    Details</a>
+                                                <a class="btn edit-btn pull-right" tabindex="0" href="#"
+                                                    data-toggle="modal" data-target="#edit-event-details"> <i
+                                                        class="fa fa-pencil"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card p-0">
+                                        <img class="card-img-top" src="./assets/images/event-image2.png"
+                                            alt="Card image" />
+                                        <div class="card-body p-2">
+                                            <h4 class="card-title "><a href="event-details.html">Event Name ...</a></h4>
+                                            <p class="disc">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                elit. Mauris et metus nisi. Nulla eleifend in leo vitae ultricies.
+                                                Curabitur lectus mi, hendrerit nec magna vitae, porttitor tincidunt
+                                                augue. Sed ac orci pulvinar, convallis turpis venenatis, vulputate nibh.
+                                                Pellentesque in tempus ante. Phasellus sed turpis nibh.
+                                            </p>
+                                            <p class="m-0">
+                                                <span class="card-text pull-left text-primary"><i
+                                                        class="fa fa-calendar-o"></i> 20/Mar/2019 -
+                                                    05/Apr/2019</span>
+                                                <a class="btn pull-right btn-xs btn-primary" tabindex="0" href="#"
+                                                    data-toggle="modal" data-target="#view-event-details">View
+                                                    Details</a>
+                                                <a class="btn edit-btn pull-right" tabindex="0" href="#"
+                                                    data-toggle="modal" data-target="#edit-event-details"> <i
+                                                        class="fa fa-pencil"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card p-0">
+                                        <img class="card-img-top" src="./assets/images/event-image3.png"
+                                            alt="Card image" />
+                                        <div class="card-body p-2">
+                                            <h4 class="card-title "><a href="event-details.html">Event Name ...</a></h4>
+                                            <p class="disc">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                elit. Mauris et metus nisi. Nulla eleifend in leo vitae ultricies.
+                                                Curabitur lectus mi, hendrerit nec magna vitae, porttitor tincidunt
+                                                augue. Sed ac orci pulvinar, convallis turpis venenatis, vulputate nibh.
+                                                Pellentesque in tempus ante. Phasellus sed turpis nibh.
+                                            </p>
+                                            <p class="m-0">
+                                                <span class="card-text pull-left text-primary"><i
+                                                        class="fa fa-calendar-o"></i> 20/Mar/2019 -
+                                                    05/Apr/2019</span>
+                                                <a class="btn pull-right btn-xs btn-primary" tabindex="0" href="#"
+                                                    data-toggle="modal" data-target="#view-event-details">View
+                                                    Details</a><a class="btn edit-btn pull-right" tabindex="0" href="#"
+                                                    data-toggle="modal" data-target="#edit-event-details"> <i
+                                                        class="fa fa-pencil"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card p-0">
+                                        <img class="card-img-top" src="./assets/images/event-image4.png"
+                                            alt="Card image" />
+                                        <div class="card-body p-2">
+                                            <h4 class="card-title "><a href="event-details.html">Event Name ...</a></h4>
+                                            <p class="disc">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                elit. Mauris et metus nisi. Nulla eleifend in leo vitae ultricies.
+                                                Curabitur lectus mi, hendrerit nec magna vitae, porttitor tincidunt
+                                                augue. Sed ac orci pulvinar, convallis turpis venenatis, vulputate nibh.
+                                                Pellentesque in tempus ante. Phasellus sed turpis nibh.
+                                            </p>
+                                            <p class="m-0">
+                                                <span class="card-text pull-left text-primary"><i
+                                                        class="fa fa-calendar-o"></i> 20/Mar/2019 -
+                                                    05/Apr/2019</span>
+                                                <a class="btn pull-right btn-xs btn-primary" tabindex="0" href="#"
+                                                    data-toggle="modal" data-target="#view-event-details">View
+                                                    Details</a><a class="btn edit-btn pull-right" tabindex="0" href="#"
+                                                    data-toggle="modal" data-target="#edit-event-details"> <i
+                                                        class="fa fa-pencil"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card p-0">
+                                        <img class="card-img-top" src="./assets/images/event-image1.png"
+                                            alt="Card image" />
+                                        <div class="card-body p-2">
+                                            <h4 class="card-title "><a href="event-details.html">Event Name ...</a></h4>
+                                            <p class="disc">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                elit. Mauris et metus nisi. Nulla eleifend in leo vitae ultricies.
+                                                Curabitur lectus mi, hendrerit nec magna vitae, porttitor tincidunt
+                                                augue. Sed ac orci pulvinar, convallis turpis venenatis, vulputate nibh.
+                                                Pellentesque in tempus ante. Phasellus sed turpis nibh.
+                                            </p>
+                                            <p class="m-0">
+                                                <span class="card-text pull-left text-primary"><i
+                                                        class="fa fa-calendar-o"></i> 20/Mar/2019 -
+                                                    05/Apr/2019</span>
+                                                <a class="btn pull-right btn-xs btn-primary" tabindex="0" href="#"
+                                                    data-toggle="modal" data-target="#view-event-details">View
+                                                    Details</a><a class="btn edit-btn pull-right" tabindex="0" href="#"
+                                                    data-toggle="modal" data-target="#edit-event-details"> <i
+                                                        class="fa fa-pencil"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card p-0">
+                                        <img class="card-img-top" src="./assets/images/event-image2.png"
+                                            alt="Card image" />
+                                        <div class="card-body p-2">
+                                            <h4 class="card-title "><a href="event-details.html">Event Name ...</a></h4>
+                                            <p class="disc">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                elit. Mauris et metus nisi. Nulla eleifend in leo vitae ultricies.
+                                                Curabitur lectus mi, hendrerit nec magna vitae, porttitor tincidunt
+                                                augue. Sed ac orci pulvinar, convallis turpis venenatis, vulputate nibh.
+                                                Pellentesque in tempus ante. Phasellus sed turpis nibh.
+                                            </p>
+                                            <p class="m-0">
+                                                <span class="card-text pull-left text-primary"><i
+                                                        class="fa fa-calendar-o"></i> 20/Mar/2019 -
+                                                    05/Apr/2019</span>
+                                                <a class="btn pull-right btn-xs btn-primary" tabindex="0" href="#"
+                                                    data-toggle="modal" data-target="#view-event-details">View
+                                                    Details</a><a class="btn edit-btn pull-right" tabindex="0" href="#"
+                                                    data-toggle="modal" data-target="#edit-event-details"> <i
+                                                        class="fa fa-pencil"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <footer id="footer" class=" mt-5">
+            <div class="copyright">
+                <small> &copy; Copyright <strong>2024</strong>. All Rights Reserved</small>
+            </div>
+
+        </footer>
+        <!-- JavaScript -->
+        <script src="./assets/js/jquery.min.js"></script>
+        <script src="./assets/js/bootstrap.bundle.min.js"></script>
+        <script src="./assets/js/script.js"></script>
+
+</body>
+
+</html>
